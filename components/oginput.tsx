@@ -11,13 +11,16 @@ import { useState } from "react";
 import NextImage from "next/image";
 
 export function OGInput() {
-  const [query, setQuery] = useState<string>("");
+  const [value, setValue] = useState<string>("");
+  const [query, setQuery] = useState<string>(value);
+
   const [imageLoading, setImageLoading] = useState<boolean>(false);
 
   const url = `/clippify?text=${encodeURIComponent(query)}`;
   const fullURL = `https://og.lambdaops.com${url}`;
 
-  const encodedQuery = encodeURIComponent(query);
+  console.log(value, query, imageLoading);
+
   return (
     <div className="space-y-2">
       <Input
@@ -25,14 +28,17 @@ export function OGInput() {
         placeholder="prompt me"
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            setQuery((e.target as HTMLInputElement).value);
+            setQuery(value);
           }
         }}
         onBlur={(e) => {
-          setQuery((e.target as HTMLInputElement).value);
+          setQuery(e.target.value);
+        }}
+        onChange={(e) => {
+          setValue(e.target.value);
         }}
         type="text"
-        value={query}
+        value={value}
       />
 
       <div className="aspect-w-16 aspect-h-9">
@@ -40,7 +46,7 @@ export function OGInput() {
           alt={query}
           className="object-cover rounded-lg"
           height={630}
-          src={imageLoading ? "https://placehold.co/1200x630" : url}
+          src={value !== query || imageLoading ? "/loading" : url}
           width={1200}
           onLoadStart={() => {
             setImageLoading(true);
