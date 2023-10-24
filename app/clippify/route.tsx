@@ -29,6 +29,7 @@ async function precomputeEmojiEmbeddings(): Promise<void> {
   for (const [emoji, description] of Object.entries(emojis)) {
     // const modifiedDescription = `${description} emoji`; // Append " emoji" to each description
     const modifiedDescription = `${description}`;
+    // @ts-ignore
     const textInputs = clip.tokenizer([modifiedDescription], {
       padding: true,
       truncation: true,
@@ -66,7 +67,7 @@ const SIMILARITY_THRESHOLD = 0.9; // Set the threshold as you see fit
 
 // Function to get the two most relevant emojis based on text embedding
 async function getRelevantEmojiPair(
-  textEmbedding: number[]
+  textEmbedding: number[],
 ): Promise<string[]> {
   type EmojiSimilarityPair = { emoji: string; similarity: number };
 
@@ -99,7 +100,6 @@ export async function GET(request: Request) {
   if (!text) {
     text = "prompt me";
   }
-
 
   const clip = await CLIPPipelineSingleton.getInstance();
   const textInputs = clip.tokenizer([text], {
@@ -152,6 +152,6 @@ export async function GET(request: Request) {
       // Supported options: 'twemoji', 'blobmoji', 'noto', 'openmoji', 'fluent' and 'fluentFlat'
       // Default to 'twemoji'
       emoji: "twemoji",
-    }
+    },
   );
 }
