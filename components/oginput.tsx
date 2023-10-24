@@ -32,7 +32,6 @@ export function OGInput() {
           className="object-cover rounded-lg"
           height={630}
           src={url}
-          objectFit="cover"
           width={1200}
         />
       </div>

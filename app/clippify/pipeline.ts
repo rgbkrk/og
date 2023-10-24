@@ -1,20 +1,25 @@
-// app/embed/clipPipeline.ts
 import {
   AutoProcessor,
   CLIPTextModelWithProjection,
   AutoTokenizer,
 } from "@xenova/transformers";
 
-type CLIPPipelineSingletonI = {
-  instance: any;
-  getInstance: () => Promise<any>;
+interface CLIPInstance {
+  processor: AutoProcessor;
+  textModel: CLIPTextModelWithProjection;
+  tokenizer: AutoTokenizer;
+}
+
+export type CLIPPipelineSingletonI = {
+  instance: CLIPInstance | null;
+  getInstance: () => Promise<CLIPInstance>;
 };
 
-const CLIP = () =>
+const CLIP = () => {
   class CLIPPipelineSingleton {
-    static instance: any = null;
+    static instance: CLIPInstance | null = null;
 
-    static async getInstance() {
+    static async getInstance(): Promise<CLIPInstance> {
       if (this.instance === null) {
         this.instance = {
           processor: await AutoProcessor.from_pretrained(
@@ -30,9 +35,11 @@ const CLIP = () =>
       }
       return this.instance;
     }
-  };
+  }
+  return CLIPPipelineSingleton;
+};
 
-let CLIPPipelineSingleton;
+let CLIPPipelineSingleton: typeof CLIP;
 if (process.env.NODE_ENV !== "production") {
   const globalAny: any = global;
   if (!globalAny.CLIPPipelineSingleton) {
