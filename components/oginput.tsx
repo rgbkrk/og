@@ -41,12 +41,12 @@ export function OGInput() {
           className="underline text-zinc-600 dark:text-zinc-300 hover:text-zinc-500 dark:hover:text-zinc-400"
           href="#"
         >
-          {(location.origin + url).slice(0, 50)}
+          {("https://og.lambdaops.com" + url).slice(0, 50)}
         </Link>
         <Button
           variant="ghost"
           onClick={() => {
-            navigator.clipboard.writeText(location.origin + url);
+            navigator.clipboard.writeText("https://og.lambdaops.com" + url);
           }}
         >
           <svg
