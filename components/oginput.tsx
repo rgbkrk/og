@@ -23,8 +23,15 @@ export function OGInput() {
       <Input
         className="border border-zinc-200 dark:border-zinc-700 rounded-lg p-2 w-full"
         placeholder="prompt me"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            setQuery((e.target as HTMLInputElement).value);
+          }
+        }}
+        onBlur={(e) => {
+          setQuery((e.target as HTMLInputElement).value);
+        }}
         type="text"
-        onChange={(e) => setQuery(e.target.value)}
         value={query}
       />
 
