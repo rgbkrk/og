@@ -41,12 +41,12 @@ export function OGInput() {
           className="underline text-zinc-600 dark:text-zinc-300 hover:text-zinc-500 dark:hover:text-zinc-400"
           href="#"
         >
-          {(window && window.location.origin + url).slice(0, 50)}
+          {(location.origin + url).slice(0, 50)}
         </Link>
         <Button
           variant="ghost"
           onClick={() => {
-            navigator.clipboard.writeText(window.location.origin + url);
+            navigator.clipboard.writeText(location.origin + url);
           }}
         >
           <svg
