@@ -102,6 +102,7 @@ export async function GET(request: Request) {
   }
 
   const clip = await CLIPPipelineSingleton.getInstance();
+  // @ts-ignore
   const textInputs = clip.tokenizer([text], {
     padding: true,
     truncation: true,
