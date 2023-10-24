@@ -1,7 +1,7 @@
 import {
   AutoProcessor,
-  CLIPTextModelWithProjection,
   AutoTokenizer,
+  CLIPTextModelWithProjection,
 } from "@xenova/transformers";
 
 interface CLIPInstance {
@@ -15,7 +15,7 @@ export type CLIPPipelineSingletonI = {
   getInstance: () => Promise<CLIPInstance>;
 };
 
-const CLIP = () => {
+function CLIP() {
   class CLIPPipelineSingleton {
     static instance: CLIPInstance | null = null;
 
@@ -23,13 +23,13 @@ const CLIP = () => {
       if (this.instance === null) {
         this.instance = {
           processor: await AutoProcessor.from_pretrained(
-            "Xenova/clip-vit-base-patch16"
+            "Xenova/clip-vit-base-patch16",
           ),
           textModel: await CLIPTextModelWithProjection.from_pretrained(
-            "Xenova/clip-vit-base-patch16"
+            "Xenova/clip-vit-base-patch16",
           ),
           tokenizer: await AutoTokenizer.from_pretrained(
-            "Xenova/clip-vit-base-patch16"
+            "Xenova/clip-vit-base-patch16",
           ),
         };
       }
@@ -37,9 +37,9 @@ const CLIP = () => {
     }
   }
   return CLIPPipelineSingleton;
-};
+}
 
-let CLIPPipelineSingleton: typeof CLIP;
+let CLIPPipelineSingleton: ReturnType<typeof CLIP>;
 if (process.env.NODE_ENV !== "production") {
   const globalAny: any = global;
   if (!globalAny.CLIPPipelineSingleton) {
