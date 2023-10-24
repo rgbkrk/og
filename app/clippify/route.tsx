@@ -63,7 +63,7 @@ async function getRelevantEmoji(textEmbedding: number[]) {
   return mostSimilarEmoji;
 }
 
-const SIMILARITY_THRESHOLD = 0.9; // Set the threshold as you see fit
+const SIMILARITY_THRESHOLD = 0.5; // Set the threshold as you see fit
 
 // Function to get the two most relevant emojis based on text embedding
 async function getRelevantEmojiPair(

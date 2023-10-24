@@ -284,5 +284,9 @@ export const emojis: Record<string, string> = {
   "🍒": "cherries",
   "🍍": "pineapple",
   "🍅": "tomato",
+  "🐼": "panda",
+  "🐻": "bear",
+  "🐨": "koala",
+  "🐯": "tiger",
 };
 
