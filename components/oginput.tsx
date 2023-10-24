@@ -20,10 +20,10 @@ export function OGInput() {
   const fullURL = `https://og.lambdaops.com${url}`;
 
   let placeholder = null;
-  if (value !== query) {
-    placeholder = "/press-enter";
-  } else if (imageLoading) {
+  if (value === query && imageLoading) {
     placeholder = "/loading";
+  } else if (value !== query) {
+    placeholder = "/press-enter";
   }
 
   return (
@@ -37,7 +37,7 @@ export function OGInput() {
           }
         }}
         onBlur={(e) => {
-          setQuery(e.target.value);
+          setQuery(value);
         }}
         onChange={(e) => {
           setValue(e.target.value);

@@ -19,9 +19,15 @@ export async function GET(request: Request) {
         }}
       >
         <div>Hit</div>
-        <div>ENTER</div>
-        <div>to</div>
-        <div>Submit!</div>
+        <div
+          style={{
+            backgroundColor: "#CCCCFF",
+            padding: "0px 10px",
+          }}
+        >
+          ENTER
+        </div>
+        <div>to Submit!</div>
       </div>
     )
   );

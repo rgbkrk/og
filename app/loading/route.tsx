@@ -13,12 +13,21 @@ export async function GET(request: Request) {
           textAlign: "left",
           justifyContent: "center",
           backgroundColor: "#fafafa",
-          fontSize: 120,
+          fontSize: 100,
           fontWeight: 600,
           paddingLeft: 360,
         }}
       >
-        Loading...
+        <div>Hit</div>
+        <div
+          style={{
+            backgroundColor: "#CCCCFF",
+            padding: "0px 10px",
+          }}
+        >
+          Loading
+        </div>
+        <div>...</div>
       </div>
     )
   );
