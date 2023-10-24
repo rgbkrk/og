@@ -12,7 +12,7 @@ type CLIPPipelineSingletonI = {
 
 const CLIP = () =>
   class CLIPPipelineSingleton {
-    static instance = null;
+    static instance: any = null;
 
     static async getInstance() {
       if (this.instance === null) {
@@ -34,10 +34,11 @@ const CLIP = () =>
 
 let CLIPPipelineSingleton;
 if (process.env.NODE_ENV !== "production") {
-  if (!global.CLIPPipelineSingleton) {
-    global.CLIPPipelineSingleton = CLIP();
+  const globalAny: any = global;
+  if (!globalAny.CLIPPipelineSingleton) {
+    globalAny.CLIPPipelineSingleton = CLIP();
   }
-  CLIPPipelineSingleton = global.CLIPPipelineSingleton;
+  CLIPPipelineSingleton = globalAny.CLIPPipelineSingleton;
 } else {
   CLIPPipelineSingleton = CLIP();
 }
