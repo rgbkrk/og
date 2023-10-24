@@ -139,7 +139,6 @@ export async function GET(request: Request) {
     (
       <div
         style={{
-          fontSize: 300,
           color: "white",
           background: "#070707",
           width: "100%",
@@ -149,9 +148,25 @@ export async function GET(request: Request) {
           justifyContent: "center",
           alignItems: "center",
           border: "10px solid #373737",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        {relevantEmojis.join(" ")}
+        <div
+          style={{
+            fontSize: 200,
+          }}
+        >
+          {relevantEmojis.join(" ")}
+        </div>
+        <div
+          style={{
+            fontSize: 50,
+            marginTop: 100,
+          }}
+        >
+          {text.length > 15 ? text.slice(0, 12) + "..." : text}
+        </div>
       </div>
     ),
     {
