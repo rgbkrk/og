@@ -8,7 +8,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
-import NextImage from "next/image";
 
 export function OGInput() {
   const [value, setValue] = useState<string>("");
@@ -55,36 +54,38 @@ export function OGInput() {
           }}
         />
       </div>
-      <div className="flex items-center space-x-2">
-        <Link
-          className="underline text-zinc-600 dark:text-zinc-300 hover:text-zinc-500 dark:hover:text-zinc-400"
-          href={fullURL}
-        >
-          {fullURL.slice(0, 50)}
-        </Link>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            navigator.clipboard.writeText(fullURL);
-          }}
-        >
-          <svg
-            className=" w-5 h-5 text-zinc-600 dark:text-zinc-300"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+      {value !== "" && (
+        <div className="flex items-center space-x-2">
+          <Link
+            className="underline text-zinc-600 dark:text-zinc-300 hover:text-zinc-500 dark:hover:text-zinc-400"
+            href={fullURL}
           >
-            <rect height="14" rx="2" ry="2" width="14" x="8" y="8" />
-            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-          </svg>
-        </Button>
-      </div>
+            {fullURL.slice(0, 50)}
+          </Link>
+          <Button
+            variant="ghost"
+            onClick={() => {
+              navigator.clipboard.writeText(fullURL);
+            }}
+          >
+            <svg
+              className=" w-5 h-5 text-zinc-600 dark:text-zinc-300"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect height="14" rx="2" ry="2" width="14" x="8" y="8" />
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+            </svg>
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
