@@ -24,7 +24,7 @@ function cosineSimilarity(A: number[], B: number[]): number {
   return dotProduct / (mA * mB);
 }
 
-export async function precomputeEmojiEmbeddings(): Promise<void> {
+async function precomputeEmojiEmbeddings(): Promise<void> {
   const clip = await CLIPPipelineSingleton.getInstance();
   for (const [emoji, description] of Object.entries(emojis)) {
     // const modifiedDescription = `${description} emoji`; // Append " emoji" to each description
