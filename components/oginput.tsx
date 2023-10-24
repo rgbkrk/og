@@ -14,6 +14,7 @@ export function OGInput() {
   const [query, setQuery] = useState<string>("");
 
   const url = `/clippify?text=${encodeURIComponent(query)}`;
+  const fullURL = `https://og.lambdaops.com${url}`;
 
   const encodedQuery = encodeURIComponent(query);
   return (
@@ -38,14 +39,14 @@ export function OGInput() {
       <div className="flex items-center space-x-2">
         <Link
           className="underline text-zinc-600 dark:text-zinc-300 hover:text-zinc-500 dark:hover:text-zinc-400"
-          href="#"
+          href={fullURL}
         >
-          {("https://og.lambdaops.com" + url).slice(0, 50)}
+          {fullURL.slice(0, 50)}
         </Link>
         <Button
           variant="ghost"
           onClick={() => {
-            navigator.clipboard.writeText("https://og.lambdaops.com" + url);
+            navigator.clipboard.writeText(fullURL);
           }}
         >
           <svg
