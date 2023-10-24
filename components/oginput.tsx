@@ -12,6 +12,7 @@ import NextImage from "next/image";
 
 export function OGInput() {
   const [query, setQuery] = useState<string>("");
+  const [imageLoading, setImageLoading] = useState<boolean>(false);
 
   const url = `/clippify?text=${encodeURIComponent(query)}`;
   const fullURL = `https://og.lambdaops.com${url}`;
@@ -32,8 +33,14 @@ export function OGInput() {
           alt={query}
           className="object-cover rounded-lg"
           height={630}
-          src={url}
+          src={imageLoading ? "https://placehold.co/1200x630" : url}
           width={1200}
+          onLoadStart={() => {
+            setImageLoading(true);
+          }}
+          onLoad={() => {
+            setImageLoading(false);
+          }}
         />
       </div>
       <div className="flex items-center space-x-2">
