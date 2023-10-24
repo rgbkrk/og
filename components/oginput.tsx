@@ -18,6 +18,15 @@ export function OGInput() {
   const url = `/clippify?text=${encodeURIComponent(query)}`;
   const fullURL = `https://og.lambdaops.com${url}`;
 
+  let image = url;
+  if (value !== query) {
+    image = "/press-enter";
+  } else if (imageLoading) {
+    image = "/loading";
+  } else {
+    image = url;
+  }
+
   return (
     <div className="space-y-2">
       <Input
@@ -44,7 +53,7 @@ export function OGInput() {
           alt={query}
           className="object-cover rounded-lg"
           height={630}
-          src={value !== query || imageLoading ? "/loading" : url}
+          src={url}
           width={1200}
           onLoadStart={() => {
             setImageLoading(true);

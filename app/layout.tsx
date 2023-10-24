@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Open Graph Image as a Service",
-  description: "For now, just hacking around",
+  title: "EmOGi Embedder",
+  description: "Embedding Emojis with CLIP into OpenGraph images",
 };
 
 export default function RootLayout({

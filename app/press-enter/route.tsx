@@ -18,8 +18,13 @@ export async function GET(request: Request) {
           paddingLeft: 60,
         }}
       >
-        Loading...
+        <div>Hit</div>
+        <div>ENTER</div>
+        <div>to</div>
+        <div>Submit!</div>
+        {/* <div style={{ marginTop: 40 }}>Waiting...</div> */}
+        {/* <div style={{ marginTop: 40 }}>Hit enter to submit</div> */}
       </div>
-    )
+    ),
   );
 }
