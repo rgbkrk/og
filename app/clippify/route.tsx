@@ -143,7 +143,7 @@ export async function GET(request: Request) {
             marginTop: 100,
           }}
         >
-          {text.length > 15 ? text.slice(0, 12) + "..." : text}
+          {text.length > 40 ? text.slice(0, 32) + "..." : text}
         </div>
       </div>
     ),

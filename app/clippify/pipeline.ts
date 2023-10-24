@@ -2,7 +2,10 @@ import {
   AutoProcessor,
   AutoTokenizer,
   CLIPTextModelWithProjection,
+  env,
 } from "@xenova/transformers";
+
+env.cacheDir = "/tmp/";
 
 interface CLIPInstance {
   processor: AutoProcessor;
