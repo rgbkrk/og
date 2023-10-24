@@ -288,5 +288,9 @@ export const emojis: Record<string, string> = {
   "🐻": "bear",
   "🐨": "koala",
   "🐯": "tiger",
+  "☕️": "coffee",
+  "🍵": "tea",
+  "🍼": "baby bottle",
+  "🍻": "clinking beer mugs",
 };
 
