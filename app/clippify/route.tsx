@@ -90,39 +90,16 @@ async function getRelevantEmojiPair(
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const text = searchParams.get("text");
+  let text = searchParams.get("text");
+
+  console.log(text);
 
   await initializeOnce(); // Ensure initialization is done at least once
 
   if (!text) {
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            fontSize: 300,
-            color: "white",
-            background: "#070707",
-            width: "100%",
-            height: "100%",
-            padding: "50px 200px",
-            textAlign: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            border: "10px solid #373737",
-          }}
-        >
-          No text provided
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-        // Supported options: 'twemoji', 'blobmoji', 'noto', 'openmoji', 'fluent' and 'fluentFlat'
-        // Default to 'twemoji'
-        emoji: "twemoji",
-      }
-    );
+    text = "prompt me";
   }
+
 
   const clip = await CLIPPipelineSingleton.getInstance();
   const textInputs = clip.tokenizer([text], {

@@ -112,7 +112,7 @@ export const emojis: Record<string, string> = {
   "😴": "sleeping",
   "😵": "dizzy",
   "🤢": "nauseated",
-  "🤮": "vomiting",
+  // "🤮": "vomiting",
   "🤧": "sneezing",
   "🥵": "hot",
   "🥶": "cold",
@@ -285,3 +285,4 @@ export const emojis: Record<string, string> = {
   "🍍": "pineapple",
   "🍅": "tomato",
 };
+
