@@ -19,13 +19,11 @@ export function OGInput() {
   const url = `/clippify?text=${encodeURIComponent(query)}`;
   const fullURL = `https://og.lambdaops.com${url}`;
 
-  let image = url;
+  let placeholder = null;
   if (value !== query) {
-    image = "/press-enter";
+    placeholder = "/press-enter";
   } else if (imageLoading) {
-    image = "/loading";
-  } else {
-    image = url;
+    placeholder = "/loading";
   }
 
   return (
@@ -48,21 +46,28 @@ export function OGInput() {
         value={value}
       />
 
-      <div className="aspect-w-16 aspect-h-9 relative">
+      <div
+        className="aspect-w-16 aspect-h-9 relative max-w-md w-full rounded-lg"
+        style={{ width: "600px", height: "315px" }}
+      >
         {/* Placeholder Image */}
         <img
-          src={imageLoading ? "/loading" : "/press-enter"}
+          src={placeholder || undefined}
           className={`object-cover rounded-lg absolute w-full h-full ${
-            imageLoading ? "opacity-100" : "opacity-0"
+            placeholder ? "opacity-100" : "opacity-0"
           }`}
           alt="Placeholder"
+          height={315}
+          width={600}
         />
         {/* Actual Image */}
         <img
           alt={query}
           className={`object-cover rounded-lg absolute w-full h-full transition-opacity duration-300 ${
-            imageLoading ? "opacity-0" : "opacity-100"
+            placeholder ? "opacity-0" : "opacity-100"
           }`}
+          height={315}
+          width={600}
           src={url}
           onLoadStart={() => {
             setImageLoading(true);

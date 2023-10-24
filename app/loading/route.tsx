@@ -12,10 +12,10 @@ export async function GET(request: Request) {
           alignItems: "flex-start",
           textAlign: "left",
           justifyContent: "center",
-          backgroundColor: "#e7efef",
+          backgroundColor: "#fafafa",
           fontSize: 120,
           fontWeight: 600,
-          paddingLeft: 60,
+          paddingLeft: 360,
         }}
       >
         Loading...

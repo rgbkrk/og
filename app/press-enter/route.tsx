@@ -12,19 +12,17 @@ export async function GET(request: Request) {
           alignItems: "flex-start",
           textAlign: "left",
           justifyContent: "center",
-          backgroundColor: "#e7efef",
-          fontSize: 120,
+          backgroundColor: "#fafafa",
+          fontSize: 100,
           fontWeight: 600,
-          paddingLeft: 60,
+          paddingLeft: 360,
         }}
       >
         <div>Hit</div>
         <div>ENTER</div>
         <div>to</div>
         <div>Submit!</div>
-        {/* <div style={{ marginTop: 40 }}>Waiting...</div> */}
-        {/* <div style={{ marginTop: 40 }}>Hit enter to submit</div> */}
       </div>
-    ),
+    )
   );
 }
