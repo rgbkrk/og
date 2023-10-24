@@ -19,8 +19,6 @@ export function OGInput() {
   const url = `/clippify?text=${encodeURIComponent(query)}`;
   const fullURL = `https://og.lambdaops.com${url}`;
 
-  console.log(value, query, imageLoading);
-
   return (
     <div className="space-y-2">
       <Input
@@ -42,7 +40,8 @@ export function OGInput() {
       />
 
       <div className="aspect-w-16 aspect-h-9">
-        <NextImage
+        {/* eslint-disable-next-line @next/next/no-img-element*/}
+        <img
           alt={query}
           className="object-cover rounded-lg"
           height={630}
